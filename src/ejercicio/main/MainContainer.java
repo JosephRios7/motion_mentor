@@ -6,9 +6,8 @@ import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.core.Runtime;
 import jade.wrapper.StaleProxyException;
-import ejercicio.agentes.AgenteRetroalimentacion;
-import ejercicio.agentes.AgenteVision;
-import ejercicio.gui.InterfazVideo;
+import ejercicio.agentes.FeedbackAgent;
+import ejercicio.agentes.VisionAgent;
 
 public class MainContainer {
 
@@ -20,11 +19,11 @@ public class MainContainer {
             ContainerController container = rt.createMainContainer(p);
 
             // Iniciar el Agente de Visión
-            AgentController agenteVision = container.createNewAgent("AgenteVision", AgenteVision.class.getName(), null);
+            AgentController agenteVision = container.createNewAgent("AgenteVision", VisionAgent.class.getName(), null);
             agenteVision.start();
 
             // Iniciar el Agente de Retroalimentación
-            AgentController agenteRetroalimentacion = container.createNewAgent("AgenteRetroalimentacion", AgenteRetroalimentacion.class.getName(), null);
+            AgentController agenteRetroalimentacion = container.createNewAgent("AgenteRetroalimentacion", FeedbackAgent.class.getName(), null);
             agenteRetroalimentacion.start();
 
         } catch (StaleProxyException e) {
